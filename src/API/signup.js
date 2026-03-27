@@ -15,7 +15,7 @@ const duplicateUserName =  async (username) => { //function checks if username a
 }
 
 export const submitUser = async (username, email, password, auth) => {
-  console.log("submitUser called with:", { username, email });
+ 
   
   if (password.length < 8) return { error: "badPassword" }
   const isDuplicate = await duplicateUserName(username)
@@ -25,20 +25,20 @@ export const submitUser = async (username, email, password, auth) => {
     console.log("Creating Firebase user...");
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const uid = userCredential.user.uid;
-    console.log("Firebase user created with UID:", uid);
+   
     
-    console.log("Creating backend user...");
+   
     const userData = {
       userid: uid,
       email: email,
       username: username,
       created: new Date().toLocaleString().split(',')[0],
     };
-    console.log("Sending user data:", userData);
+
     
     const response = await axios.post(`https://album-review-app-lnmu.onrender.com/users`, userData);
     
-    console.log("Backend response:", response.status, response.data);
+
     
     if (response.status === 201) {
       console.log("User creation successful");
