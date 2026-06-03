@@ -50,9 +50,6 @@ export async function getTracks(headers, apiquery) {
 
 export async function getSearchedAlbums(headers, albumquery) {
 
-  console.log(headers, albumquery)
-
-
   try {
     const response = await axios.get("https://api.spotify.com/v1/search?", {
       params: {
