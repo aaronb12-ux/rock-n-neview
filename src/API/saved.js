@@ -41,7 +41,6 @@ export async function checkIfSaved(userid, albumid) {
     try {
         const response = await axios.get(`https://album-review-app-lnmu.onrender.com/users/${userid}/saved-albums/${albumid}`)
         if (response.status === 200) {
-            console.log(response)
             return response.data._id
         }
     } catch (error) {
